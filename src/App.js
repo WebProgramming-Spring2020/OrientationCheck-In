@@ -1,17 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import Event from './event';
-import Form from './form';
-import './finalProject.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route} from "react-router-dom";
 
-import {BrowserRouter} from 'react-router-dom';
-import './App.css';
+import Navbar from "./components/navbar.component"
+import AttendancesList from "./components/attendances-list.component";
+import EditAttendance from "./components/edit-attendance.component";
+import CreateAttendance from "./components/create-attendance.component";
+import CreateUser from "./components/create-user.component";
 
 function App() {
   return (
-   	<div className = "border">
-		<Form />
-	</div>
+    <Router>
+      <div className="container">
+      <Navbar />
+      <br/>
+      <Route path="/" exact component={AttendancesList} />
+      <Route path="/edit/:id" component={EditAttendance} />
+      <Route path="/create" component={CreateAttendance} />
+      <Route path="/user" component={CreateUser} />
+      </div>
+    </Router>
   );
 }
 
